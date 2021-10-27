@@ -7,5 +7,7 @@ edition = "2018"
 
 [dependencies]
 bevy = "*"
-meval = "*"
+meval = { version = "*", features = ["serde"] }
 anyhow = "*"
+bevy_asset_ron = "*"
+serde = { version = "*", features = ["derive"] }
