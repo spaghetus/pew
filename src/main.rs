@@ -1,6 +1,6 @@
 use std::time::{Duration, Instant};
 
-use bevy::{prelude::*, tasks::TaskPool};
+use bevy::prelude::*;
 
 mod bullet;
 use bullet::*;
@@ -29,38 +29,8 @@ fn main() {
 			..Default::default()
 		})
 		.add_plugins(DefaultPlugins)
-		.add_startup_system(setup_s.system())
-		.add_system(bullet_move_s.system())
-		.add_system(bullet_add_s.system())
-		.add_system(ship_move_s.system())
-		.add_system(screen_bounds_s.system())
-		.add_system(ship_shoot_s.system())
-		.add_system(bullet_despawn_s.system())
-		.add_system(spawn_stars.system())
-		.add_system(move_stars.system())
-		.add_system(delete_stars.system())
+		.add_plugin(BulletPlugin)
+		.add_plugin(ShipPlugin)
+		.add_plugin(StarsPlugin)
 		.run();
-}
-
-/// Creates a Ship and an EnemySpawner
-fn setup_s(mut c: Commands, mut materials: ResMut<Assets<ColorMaterial>>) {
-	c.spawn_bundle(OrthographicCameraBundle::new_2d());
-	let ship_material = materials.add(Color::rgb(1.0, 0.8, 1.0).into());
-	c.spawn_bundle(SpriteBundle {
-		sprite: Sprite::new(Vec2::new(10.0, 16.0)),
-		transform: Transform::from_translation(Vec3::new(0.0, -(HEIGHT / 2.) + 50., 0.0)),
-		material: ship_material.clone(),
-		..Default::default()
-	})
-	.insert(Ship)
-	.insert(ShipWeapon(
-		BulletPattern {
-			x: "(sin(10*t*(n-2.5)/2)*50) + ((n-2.5)*5*t)".parse().unwrap(),
-			y: "(t*150) + (cos(20*t)*30) - 30".parse().unwrap(),
-			count: 5,
-			delay: Duration::from_secs_f64(0.1),
-			inner: None,
-		},
-		Instant::now(),
-	));
 }
