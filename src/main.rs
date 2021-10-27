@@ -11,11 +11,15 @@ use ship::*;
 mod asset;
 use asset::*;
 
+mod stars;
+use stars::*;
+
 const HEIGHT: f32 = 600.0;
 const WIDTH: f32 = 400.0;
 
 fn main() {
 	App::build()
+		.insert_resource(ClearColor(Color::rgb(0.1, 0.1, 0.1)))
 		.insert_resource(WindowDescriptor {
 			title: "Pew".to_string(),
 			width: WIDTH,
@@ -32,6 +36,9 @@ fn main() {
 		.add_system(screen_bounds_s.system())
 		.add_system(ship_shoot_s.system())
 		.add_system(bullet_despawn_s.system())
+		.add_system(spawn_stars.system())
+		.add_system(move_stars.system())
+		.add_system(delete_stars.system())
 		.run();
 }
 
@@ -49,7 +56,7 @@ fn setup_s(mut c: Commands, mut materials: ResMut<Assets<ColorMaterial>>) {
 	.insert(ShipWeapon(
 		BulletPattern {
 			x: "(sin(10*t*(n-2.5)/2)*50) + ((n-2.5)*5*t)".parse().unwrap(),
-			y: "(t*300) + (cos(20*t)*30) - 30".parse().unwrap(),
+			y: "(t*150) + (cos(20*t)*30) - 30".parse().unwrap(),
 			count: 5,
 			delay: Duration::from_secs_f64(0.1),
 			inner: None,

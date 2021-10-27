@@ -11,3 +11,4 @@ meval = { version = "*", features = ["serde"] }
 anyhow = "*"
 bevy_asset_ron = "*"
 serde = { version = "*", features = ["derive"] }
+rand = "*"

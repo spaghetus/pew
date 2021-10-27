@@ -2547,6 +2547,7 @@ dependencies = [
  "bevy",
  "bevy_asset_ron",
  "meval",
+ "rand",
  "serde",
 ]
 
