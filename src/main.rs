@@ -29,6 +29,7 @@ fn main() {
 			..Default::default()
 		})
 		.add_plugins(DefaultPlugins)
+		.add_plugin(AssetPlugin)
 		.add_plugin(BulletPlugin)
 		.add_plugin(ShipPlugin)
 		.add_plugin(StarsPlugin)

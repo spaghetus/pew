@@ -2,5 +2,9 @@
   "cSpell.words": [
     "despawn",
     "roguelike"
-  ]
+  ],
+  "files.associations": {
+    "conf.ship": "ron",
+    "*.pattern": "ron"
+  }
 }

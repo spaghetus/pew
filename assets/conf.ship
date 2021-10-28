@@ -1,0 +1,6 @@
+(
+  speed: 300.0,
+  size: (10.0, 16.0),
+  color: Rgba (red: 1.0, green: 0.8, blue: 1.0, alpha: 1.0),
+  starting_pattern: "basic"
+)
