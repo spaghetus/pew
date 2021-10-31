@@ -1,0 +1,6 @@
+(
+  name: "circling-above-basic",
+  health: 1,
+  weapon: "basic",
+  movement: "circling",
+)
