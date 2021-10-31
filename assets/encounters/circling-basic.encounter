@@ -1,0 +1,24 @@
+(
+  name: "circling-basic",
+  enemies: [
+    (
+      name: "circling-above-basic",
+      starting_position: (-30, -100),
+      time_offset: (secs: 0, nanos: 0),
+      index: 0
+    ),
+    (
+      name: "circling-above-basic",
+      starting_position: (0, -100),
+      time_offset: (secs: 0, nanos: 0),
+      index: 1,
+    ),
+    (
+      name: "circling-above-basic",
+      starting_position: (30, -100),
+      time_offset: (secs: 0, nanos: 0),
+      index: 3,
+    )
+  ],
+  difficulty: 2
+)

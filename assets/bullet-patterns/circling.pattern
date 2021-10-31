@@ -2,6 +2,6 @@
   name: "circling",
   x: "sin((t*30)+(n*60))*300",
   y: "cos((t*30)+(n*60))*50",
-  count: 6,
+  count: 1,
   delay: (secs: 0, nanos: 0)
 )

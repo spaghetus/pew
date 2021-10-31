@@ -10,6 +10,9 @@ pub use bullet::*;
 mod enemy;
 pub use enemy::*;
 
+mod encounter;
+pub use encounter::*;
+
 /// Plugin which adds config loading
 pub struct AssetPlugin;
 
@@ -18,6 +21,7 @@ impl Plugin for AssetPlugin {
 		app.add_plugin(RonAssetPlugin::<ShipConfig>::new(&["ship"]))
 			.add_plugin(RonAssetPlugin::<BulletPatternConfig>::new(&["pattern"]))
 			.add_plugin(RonAssetPlugin::<EnemyConfig>::new(&["enemy"]))
+			.add_plugin(RonAssetPlugin::<EncounterConfig>::new(&["encounter"]))
 			.add_startup_system(setup_assets_s.system());
 
 		let world = app.world_mut();
@@ -35,9 +39,16 @@ impl Plugin for AssetPlugin {
 			.iter()
 			.map(|handle| handle.clone().typed())
 			.collect();
+		let encounters: Vec<Handle<EncounterConfig>> = server
+			.load_folder("encounters")
+			.unwrap()
+			.iter()
+			.map(|handle| handle.clone().typed())
+			.collect();
 		app.insert_resource(ship_config);
 		app.insert_resource(bullet_patterns);
 		app.insert_resource(enemies);
+		app.insert_resource(encounters);
 	}
 }
 
