@@ -14,6 +14,9 @@ use asset::*;
 mod stars;
 use stars::*;
 
+mod enemy;
+use enemy::*;
+
 const HEIGHT: f32 = 600.0;
 const WIDTH: f32 = 400.0;
 
@@ -33,5 +36,6 @@ fn main() {
 		.add_plugin(BulletPlugin)
 		.add_plugin(ShipPlugin)
 		.add_plugin(StarsPlugin)
+		.add_plugin(EnemyPlugin)
 		.run();
 }
